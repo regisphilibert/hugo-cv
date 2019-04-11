@@ -1,0 +1,15 @@
+- id: cv_objective
+  translation: "Objectif"
+
+- id: cv_summary
+  translation: "Résumé"
+- id: cv_skills
+  translation: "Compétences"
+- id: cv_experiences
+  translation: "Expériences Professionnelles"
+- id: cv_major_works
+  translation: "Projets majeurs"
+- id: cv_interests
+  translation: "Intérêts"
+- id: cv_print
+  translation: "Imprimer"

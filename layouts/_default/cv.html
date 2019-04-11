@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+		<link href="{{ relURL "cv.css" }}" rel="stylesheet" type="text/css">
+		{{ with .Resources.GetMatch "*.css" }}
+			<link href="{{ .Permalink }}" rel="stylesheet" type="text/css">
+		{{ end }}
+		<title>CV</title>
+	</head>
+	{{ with .Params.color }}
+		<style>
+			:root{
+				--cMainColor:{{ . }}
+			}
+		</style>
+	{{ end }}
+	<body>
+		{{ $cv := .Params }}
+		<div class="cv-container">
+			
+			<a href="javascript:window.print()" class="cv-action">{{ i18n "cv_print" }}</a>
+			<div class="cv-info">
+				<h3>
+					{{ .Param "name" }}
+				</h3>
+				<address>
+					{{ .Param "address" }}<br>
+					{{ .Param "cell" }}<br>
+					{{ .Param "email" }}<br>
+					{{ .Param "website" }}
+				</address>
+			</div>
+			{{ with $cv.objective }}
+				<p>
+					<strong>{{ i18n "cv_objective" }}: {{ . }}</strong>
+				</p>
+			{{ end }}
+
+			{{ with $cv.summary }}
+				<div class="cv-summary">
+					<ul>
+						{{ range . }}
+							<li>{{ . }}</li>
+						{{ end }}
+					</ul>
+				</div>
+			{{ end }}			
+
+			{{ with $cv.skills }}
+				<h2>{{ i18n "cv_skills" }}</h2>
+				{{ range . }}
+					<h4>
+						{{ .title }}
+					</h4>
+					<ul>
+						{{ range .items }}
+							<li>{{ . }}</li>
+						{{ end }}
+					</ul>
+				{{ end }}
+			{{ end }}
+
+			<h2>{{ i18n "cv_experiences" }}</h2>
+			{{ range $cv.experiences }}
+				<div class="cv-date pull-right">{{ .when }}</div>
+				<h3>{{ .what }}</h3>
+				{{ with .where }}
+					<p>{{ . | markdownify }}</p>
+				{{ end }}
+				{{ with .tasks }}
+					<ul>
+						{{ range . }}
+							<li>{{ . }}</li>
+						{{ end }}
+					</ul>
+				{{ end }}
+			{{ end }}
+			{{ with $cv.projects }}
+				<h2>{{ i18n "cv_major_works" }}</h2>
+				{{ range . }}
+					<div class="cv-date pull-right">{{ .when }}</div>
+					<h3>{{ .what }}{{ with .url}} ({{ . | markdownify }}){{ end }}</h3>
+					{{ with .where }}
+						<p>{{ . | markdownify }}</p>
+					{{ end }}
+					{{ with .tasks }}
+						<ul>
+							{{ range . }}
+								<li>{{ . }}</li>
+							{{ end }}
+						</ul>
+					{{ end }}
+				{{ end }}
+			{{ end }}
+			
+
+			{{ with $cv.interests }}
+				<h2>{{ i18n "cv_interests" }}</h2>
+				<ul>
+					{{ range . }}
+						<li>{{ . }}</li>		
+					{{ end }}
+				</ul>
+			{{ end }}
+
+			{{ with .Content }}
+				{{ . }}
+			{{ end }}
+
+		</div>
+			
+    </body>
+</html>

@@ -1,0 +1,18 @@
+baseURL: "http://cv.regisphilibert.com/"
+DefaultContentLanguage: "en"
+MetaDataFormat: "yaml"
+title: "Regis Philibert - CV"
+
+params:
+  name: Régis Philibert
+  title: Front-End Developer
+  address: 6247 rue Alma Montréal (QC) H2S 2W2
+  cell: 514-623-5997
+  email: regis@regisphilibert.com
+  website: https://regisphilibert.com
+
+languages:
+  en:
+    weight: 1
+  fr:
+    weight: 2

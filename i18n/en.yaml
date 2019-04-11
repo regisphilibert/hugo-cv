@@ -1,0 +1,15 @@
+- id: cv_objective
+  translation: "Objective"
+
+- id: cv_summary
+  translation: "Summary"
+- id: cv_skills
+  translation: "Skills"
+- id: cv_experiences
+  translation: "Work Experiences"
+- id: cv_major_works
+  translation: "Major Works"
+- id: cv_interests
+  translation: "Interests"
+- id: cv_print
+  translation: "Print"
